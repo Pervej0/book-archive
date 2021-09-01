@@ -20,9 +20,10 @@ searchClick();
 
 // loadData: to fetch API data-
 const loadData = async (input, spinner) => {
-  const url = `http://openlibrary.org/search.json?q=${input}`;
+  const url = `https://openlibrary.org/search.json?q=${input}`;
   const response = await fetch(url);
   const data = await response.json().catch((error) => console.log(error));
+
   setLoadData(data, spinner);
 };
 
@@ -47,9 +48,18 @@ const setLoadData = (info, spinner) => {
 
   // create & append books item-
   info.docs.forEach((elem) => {
-    console.log(errorContainer);
-
     let { title, cover_i, first_publish_year, publisher, author_name } = elem;
+    author_name?.toString();
+    publisher?.toString();
+    console.log(author_name);
+    if (!author_name) {
+      author_name = "Sorry, Don't found ";
+    } else if (!first_publish_year) {
+      first_publish_year = "Sorry, Don't found ";
+    } else if (!publisher) {
+      publisher = "Sorry, Don't found ";
+    }
+
     const div = document.createElement("div");
     div.classList.add("col-md-3", "col-sm-6", "col-12");
     div.innerHTML = `<div class="card">
