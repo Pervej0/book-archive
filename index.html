@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book-archive</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .banner {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+          url(./images/library.jpg) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- search section -->
+    <section class="container-fluied banner">
+      <div class="container">
+        <form class="text-center py-5">
+          <label
+            class="w-50 mx-auto py-5 rounded-3 d-flex justify-content-between"
+          >
+            <input
+              type="search"
+              name="Search"
+              placeholder="Search here.."
+              aria-label="Search"
+              id="search-input"
+              class="px-2 py-3 w-100"
+            /><button class="btn btn-danger py-3 border-0" id="search-btn">
+              Search
+            </button>
+          </label>
+        </form>
+      </div>
+    </section>
+    <!-- Spinner & Error section -->
+    <section class="container">
+      <p class="pt-1 text-success fw-bold" id="total-found"></p>
+      <!-- for error -->
+      <div class="d-none" id="error">
+        <h1 class="text-danger text-center mt-5">
+          Sorry,
+          <p class="h4">your result don't exist</p>
+        </h1>
+      </div>
+      <!-- spinner -->
+      <div class="text-center pt-5 d-none" id="spinner">
+        <img class="img-fluid" src="./images/spinner.gif" alt="Loading" />
+      </div>
+    </section>
+    <!-- books container -->
+    <section class="container">
+      <div class="row mt-4 gy-3" id="books-araea"></div>
+    </section>
+    <!-- custom js -->
+    <script src="/script.js"></script>
+  </body>
+</html>
