@@ -42,9 +42,7 @@ const setLoadData = (info, spinner) => {
     totalFound.textContent = "";
     return;
   }
-
   // Total result found set-
-  console.log(info.numFound);
   totalFound.innerText = `About ${info.numFound} rsults found, here's ${info.docs.length}`;
 
   // create & append books item-
@@ -75,7 +73,6 @@ const setLoadData = (info, spinner) => {
     if (!publisher) {
       publisher = "Sorry, Don't found ";
     }
-
     const div = document.createElement("div");
     div.classList.add("col-lg-3", "col-md-4", "col-sm-6", "col-12");
     div.innerHTML = `<div class="card">
