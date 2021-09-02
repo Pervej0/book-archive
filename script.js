@@ -29,8 +29,9 @@ const loadData = async (input, spinner) => {
 
 // setLoadData: to show books item on HTML DOC-
 const setLoadData = (info, spinner) => {
-  let errorContainer = document.getElementById("error");
-  const booksContainer = document.getElementById("books-araea");
+  const booksContainer = document.getElementById("books-area");
+  const totalFound = document.getElementById("total-found");
+  const errorContainer = document.getElementById("error");
   booksContainer.textContent = "";
 
   // error handling for unfounded result-
@@ -38,25 +39,40 @@ const setLoadData = (info, spinner) => {
     errorContainer.classList.remove("d-none");
     errorContainer.classList.add("d-block");
     spinner.classList.add("d-none");
+    totalFound.textContent = "";
     return;
   }
 
   // Total result found set-
-  const totalFound = document.getElementById("total-found");
   console.log(info.numFound);
   totalFound.innerText = `About ${info.numFound} rsults found, here's ${info.docs.length}`;
 
   // create & append books item-
   info.docs.forEach((elem) => {
     let { title, cover_i, first_publish_year, publisher, author_name } = elem;
+
+    cover_i = `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`;
+
+    // for multiple publisher & author_name slice in:1--
+    if (author_name?.length > 1) {
+      author_name = author_name.slice(0, 1) + " and more..";
+    }
+    if (publisher?.length > 1) {
+      publisher = publisher.slice(0, 1) + " and more..";
+    }
+
+    // converting into string-
     author_name?.toString();
     publisher?.toString();
-    console.log(author_name);
+
+    // handle null & undefined value-
     if (!author_name) {
       author_name = "Sorry, Don't found ";
-    } else if (!first_publish_year) {
+    }
+    if (!first_publish_year) {
       first_publish_year = "Sorry, Don't found ";
-    } else if (!publisher) {
+    }
+    if (!publisher) {
       publisher = "Sorry, Don't found ";
     }
 
@@ -64,7 +80,7 @@ const setLoadData = (info, spinner) => {
     div.classList.add("col-md-3", "col-sm-6", "col-12");
     div.innerHTML = `<div class="card">
                       <div class="h-25 w-100">
-                        <img class="img-fluid h-100 w-100"  src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top" alt="cover-img">
+                        <img class="img-fluid h-100 w-100"  src="${cover_i}" class="card-img-top" alt="cover-img">
                       </div>
                       <div class="card-body">
                         <h5 class="card-title">${title}</h5>
