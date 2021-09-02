@@ -77,7 +77,7 @@ const setLoadData = (info, spinner) => {
     }
 
     const div = document.createElement("div");
-    div.classList.add("col-md-3", "col-sm-6", "col-12");
+    div.classList.add("col-lg-3", "col-md-4", "col-sm-6", "col-12");
     div.innerHTML = `<div class="card">
                       <div class="h-25 w-100">
                         <img class="img-fluid h-100 w-100"  src="${cover_i}" class="card-img-top" alt="cover-img">
